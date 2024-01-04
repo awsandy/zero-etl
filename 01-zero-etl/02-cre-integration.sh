@@ -16,3 +16,10 @@ echo "Target = $tgtrs"
 # create integration
 aws rds create-integration --source-arn $srcarn --target-arn $tgtarn --integration-name zero-etl-serverless
 aws rds describe-integrations
+is=$(aws rds describe-integrations --query 'Integrations[].Status' --output text)
+while [ "$is" == "creating" ];do
+is=$(aws rds describe-integrations --query 'Integrations[].Status' --output text)
+echo "Waiting for integration, status= $is"
+sleep 15
+done
+aws rds describe-integrations --query 'Integrations[]'
