@@ -1,0 +1,6 @@
+CREATE EXTERNAL SCHEMA custpaytxn
+FROM KINESIS
+IAM_ROLE  default;
+----
+select * from SVV_EXTERNAL_SCHEMAS;
+
