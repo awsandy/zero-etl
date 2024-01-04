@@ -1,3 +1,4 @@
+use demodb;
 select '1. region' as tablename,count(*) from demodb.region union
 select '2. nation',count(*) from demodb.nation union
 select '3. supplier', count(*) from demodb.supplier union

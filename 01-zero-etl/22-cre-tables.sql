@@ -1,5 +1,3 @@
-create database demodb;
-
 use demodb;
 
 create table region (
