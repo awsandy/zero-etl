@@ -26,6 +26,17 @@ set to enable case sensitive
 
 aws redshift-serverless update-workgroup --workgroup-name redshift_serverless_workgroup_name --config-parameters parameterKey=enable_case_sensitive_identifier,parameterValue=true --region us-east-1
 
+./02*.sh - create integration (in rds - source rds - target redshift) and wait for status
+./11*.sh - query integration in redshift
+./12*.sh - create integration db in redshift
+./21*.sh - create aurora db
+./22*.sh - create tables in rds aurora
+./23*.sh - load data from s3 into tables
+./31*.sh - check data load on source rds aurora db
+./41*.sh - check data load form redshift target
+
+
+
 ----
 
 ## Configure security - IAM
