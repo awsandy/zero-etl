@@ -2,4 +2,5 @@
 #export PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .password)
 #export PGUSER=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .username)
 #psql dev -h $ENDPOINT -U $PGUSER -p 5439 -f $fn
-echo $0
+me=$(basename "$0")
+echo $me
