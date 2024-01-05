@@ -2,3 +2,6 @@ export ENDPOINT=$(aws redshift-serverless  list-workgroups --query 'workgroups[]
 export PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .password)
 export PGUSER=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .username)
 psql dev -h $ENDPOINT -U $PGUSER -p 5439 -f ./21-load-super-refresh.sql
+
+echo "21-load-super-refresh.sql finished"
+echo "query results can take 15 mins to show up"
