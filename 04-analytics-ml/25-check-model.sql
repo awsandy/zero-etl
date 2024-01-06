@@ -1,0 +1,1 @@
+SHOW MODEL cust_cc_txn_fd;
