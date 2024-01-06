@@ -1,1 +1,1 @@
-select * From postgres.customer_info;
+select * From postgres.customer_info limit 10;

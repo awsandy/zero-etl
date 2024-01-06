@@ -8,6 +8,7 @@ URI '${pgendp}'
 IAM_ROLE default
 SECRET_ARN '${pgsecarn}'
 EOF
+echo "running 21-cre-ext-schema.sql"
 export ENDPOINT=$(aws redshift-serverless  list-workgroups --query 'workgroups[].endpoint.address' --output text | grep zero-etl-destination)
 export PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .password)
 export PGUSER=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .username)
