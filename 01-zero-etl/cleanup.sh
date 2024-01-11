@@ -1,3 +1,6 @@
+intid=$(aws rds describe-integrations --query 'Integrations[].IntegrationArn' --output text | rev | cut -f1 -d':' | rev) 
+aws rds delete-integration -integration-identifier $intid
+sleep 10
 export ENDPOINT=$(aws redshift-serverless  list-workgroups --query 'workgroups[].endpoint.address' --output text | grep zero-etl-destination)
 export PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .password)
 export PGUSER=$(aws secretsmanager get-secret-value --secret-id "RedshiftServerlessSecret" --query SecretString --output text | jq -r .username)
