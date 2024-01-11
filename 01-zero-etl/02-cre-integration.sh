@@ -19,7 +19,7 @@ aws rds describe-integrations
 is=$(aws rds describe-integrations --query 'Integrations[].Status' --output text)
 while [ "$is" == "creating" ];do
 is=$(aws rds describe-integrations --query 'Integrations[].Status' --output text)
-echo "Waiting for integration, status= $is"
-sleep 15
+echo "Waiting for integration, status= $is, sleeping for 30s"
+sleep 30
 done
 aws rds describe-integrations --query 'Integrations[]'
