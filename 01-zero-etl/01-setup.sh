@@ -1,3 +1,4 @@
+sudo dnf upgrade --releasever=2023.3.20240108
 nsn=$(aws redshift-serverless list-namespaces --query 'namespaces[].namespaceName' --output text | grep zero-etl)
 echo $nsn
 # namespace resource policy:
